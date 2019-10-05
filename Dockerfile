@@ -23,3 +23,6 @@ RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | \
 
 RUN apt-get update -y
 RUN apt-get install -y google-cloud-sdk
+
+# Install kubectl
+RUN apt-get install -y kubectl
