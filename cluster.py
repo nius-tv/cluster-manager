@@ -45,8 +45,8 @@ class Cluster(object):
 		while True:
 			print('waiting for pod:', name)
 			cmd = 'kubectl get pods \
-					--selector app={} \
-					-o jsonpath="{.items[*].status.phase}"'.format(name)
+					--selector=app={} \
+					-o jsonpath="{{.items[*].status.phase}}"'.format(name)
 			output = subprocess.check_output(['bash', '-c', cmd])
 
 			if output.lower() == 'running':
