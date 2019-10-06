@@ -24,7 +24,7 @@ def check_subscriptions(checks=0):
 
 def copy_jobs():
 	for pod in INIT_PODS:
-		cmd = 'gcloud docker -- run \
+		cmd = 'docker run \
 				-t {image} \
 				cat {path} \
 				>> {job_dir}/{name}.yaml'.format(
@@ -38,6 +38,7 @@ def copy_jobs():
 if __name__ == '__main__':
 	cluster = Cluster()
 	pubsub = PubSub()
+	copy_jobs()
 
 	while True:
 		check_subscriptions()
