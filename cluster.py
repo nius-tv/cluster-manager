@@ -7,16 +7,6 @@ from config import *
 
 class Cluster(object):
 
-	def _cluster_exists(self):
-		cmd = 'gcloud container clusters list \
-				--filter name={cluster_name} \
-				--zone {zone}'.format(
-					cluster_name=CLUSTER_NAME,
-					zone=ZONE)
-		output = subprocess.check_output(['bash', '-c', cmd])
-		output = json.loads(output)
-		return len(output) > 0
-
 	def _connect_to_cluster(self):
 		cmd = 'gcloud container clusters get-credentials {cluster_name} \
 				--project {project_name} \
@@ -71,6 +61,16 @@ class Cluster(object):
 					cluster_name=CLUSTER_NAME,
 					zone=ZONE)
 		subprocess.call(['bash', '-c', cmd])
+
+	def exists(self):
+		cmd = 'gcloud container clusters list \
+				--filter name={cluster_name} \
+				--zone {zone}'.format(
+					cluster_name=CLUSTER_NAME,
+					zone=ZONE)
+		output = subprocess.check_output(['bash', '-c', cmd])
+		output = json.loads(output)
+		return len(output) > 0
 
 	def start(self):
 		self._create_cluster()
