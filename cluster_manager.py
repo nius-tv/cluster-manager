@@ -35,7 +35,7 @@ def copy_jobs():
 		cmd = 'docker run \
 				-t {image} \
 				cat {path} \
-				>> {job_dir}/{name}.yaml'.format(
+				> {job_dir}/{name}.yaml'.format(
 					image=pod['image'],
 					path=pod['path'],
 					job_dir=JOBS_DIR,
