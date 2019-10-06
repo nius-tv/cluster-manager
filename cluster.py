@@ -48,10 +48,11 @@ class Cluster(object):
 					--selector=app={} \
 					-o jsonpath="{{.items[*].status.phase}}"'.format(name)
 			output = subprocess.check_output(['bash', '-c', cmd])
+			output = output.decode('utf-8').lower()
 
-			if output.lower() == 'running':
+			if output == 'running':
 				break
-			if output.lower() == 'error':
+			if output == 'error':
 				raise
 			time.sleep(5)
 
