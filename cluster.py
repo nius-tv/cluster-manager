@@ -69,8 +69,8 @@ class Cluster(object):
 					cluster_name=CLUSTER_NAME,
 					zone=ZONE)
 		output = subprocess.check_output(['bash', '-c', cmd])
-		output = json.loads(output)
-		return len(output) > 0
+		output = output.decode('utf-8') # binary to utf-8 string
+		return not output == ''
 
 	def start(self):
 		self._create_cluster()
