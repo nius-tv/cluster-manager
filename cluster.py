@@ -74,7 +74,11 @@ class Cluster(object):
 		return not output == ''
 
 	def start(self):
+		print('creating cluster')
 		self._create_cluster()
+		print('connecting to cluster')
 		self._connect_to_cluster()
 		for pod in INIT_PODS:
-			self._start_pod(pod['name'])
+			name = pod['name']
+			print('starting pod:', name)
+			self._start_pod(name)

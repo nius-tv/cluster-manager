@@ -7,7 +7,10 @@ from pubsub import PubSub
 
 
 def check_subscriptions(checks=0):
-	if pubsub.num_undelivered_messages() == 0:
+	num_undelivered_messages = pubsub.num_undelivered_messages()
+	print('messages queued:', num_undelivered_messages)
+
+	if num_undelivered_messages == 0:
 		print('checks:', checks, '/', MAX_CHECKS)
 
 		if checks < MAX_CHECKS:
@@ -24,6 +27,8 @@ def check_subscriptions(checks=0):
 
 def copy_jobs():
 	for pod in INIT_PODS:
+		name = pod['name']
+		print('copying pod yaml:', name)
 		cmd = 'docker run \
 				-t {image} \
 				cat {path} \
@@ -31,7 +36,7 @@ def copy_jobs():
 					image=pod['image'],
 					path=pod['path'],
 					job_dir=JOBS_DIR,
-					name=pod['name'])
+					name=name)
 		subprocess.call(['bash', '-c', cmd])
 
 
@@ -41,5 +46,6 @@ if __name__ == '__main__':
 	copy_jobs()
 
 	while True:
+		print('checking queued messages')		
 		check_subscriptions()
 		time.sleep(60) # 1 minute
