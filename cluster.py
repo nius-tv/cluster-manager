@@ -76,4 +76,4 @@ class Cluster(object):
 		self._create_cluster()
 		self._connect_to_cluster()
 		for pod in INIT_PODS:
-			self._start_pod(pod)
+			self._start_pod(pod['name'])

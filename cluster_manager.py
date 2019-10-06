@@ -1,6 +1,8 @@
 import time
+import subprocess
 
 from cluster import Cluster
+from config import *
 from pubsub import PubSub
 
 
@@ -18,6 +20,19 @@ def check_subscriptions(checks=0):
 
 	elif not cluster.exists():
 		cluster.start()
+
+
+def copy_jobs():
+	for pod in INIT_PODS:
+		cmd = 'gcloud docker -- run \
+				-t {image} \
+				cat {path} \
+				>> {job_dir}/{name}.yaml'.format(
+					image=pod['image'],
+					path=pod['path'],
+					job_dir=JOBS_DIR,
+					name=pod['name'])
+		subprocess.call(['bash', '-c', cmd])
 
 
 if __name__ == '__main__':

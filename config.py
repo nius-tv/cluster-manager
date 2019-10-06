@@ -2,10 +2,18 @@ CHECK_TIMEOUT = 2 # in minutes
 CLUSTER_NAME = 'plasmic-generate'
 GPU_TYPE = 'nvidia-tesla-p100'
 INIT_PODS = [
-	'gentle',
-	'init-story'
+	{
+		'image': 'us.gcr.io/plasmic/generate-jobs-manager',
+		'name': 'gentle',
+		'path': '/app/gentle.yaml'
+	},
+	{
+		'image': 'us.gcr.io/plasmic/generate-jobs-manager',
+		'name': 'init-story',
+		'path': '/app/init-story.yaml'
+	}
 ]
-JOBS_DIR = '/jobs'
+JOBS_DIR = '/tmp'
 MACHINE_TYPE = 'n1-standard-4'
 MAX_CHECKS = 5
 PROJECT_NAME = 'plasmic-artefacts'
