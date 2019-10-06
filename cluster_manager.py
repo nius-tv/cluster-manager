@@ -41,4 +41,4 @@ if __name__ == '__main__':
 
 	while True:
 		check_subscriptions()
-		time.sleep(60 * 1) # 1 minute
+		time.sleep(60) # 1 minute
