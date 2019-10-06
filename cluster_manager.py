@@ -1,3 +1,5 @@
+import time
+
 from cluster import Cluster
 from pubsub import PubSub
 
@@ -13,11 +15,15 @@ def check_subscriptions(checks=0):
 
 		elif checks == MAX_CHECKS:
 			cluster.delete()
-	else:
+
+	elif not cluster.exists():
 		cluster.start()
 
 
 if __name__ == '__main__':
 	cluster = Cluster()
 	pubsub = PubSub()
-	check_subscriptions()
+
+	while True:
+		check_subscriptions()
+		time.sleep(60 * 1) # 1 minute
