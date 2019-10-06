@@ -1,3 +1,4 @@
+import json
 import subprocess
 import time
 
@@ -5,6 +6,16 @@ from config import *
 
 
 class Cluster(object):
+
+	def _cluster_exists(self):
+		cmd = 'gcloud container clusters list \
+				--filter name={cluster_name} \
+				--zone {zone}'.format(
+					cluster_name=CLUSTER_NAME,
+					zone=ZONE)
+		output = subprocess.check_output(['bash', '-c', cmd])
+		output = json.loads(output)
+		return len(output) > 0
 
 	def _connect_to_cluster(self):
 		cmd = 'gcloud container clusters get-credentials {cluster_name} \
