@@ -51,6 +51,7 @@ class Cluster(object):
 			output = output.decode('utf-8').lower()
 
 			if output == 'running':
+				print('pod', name, 'is running')
 				break
 			if output == 'error':
 				raise
