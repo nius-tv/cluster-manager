@@ -25,7 +25,7 @@ def check_queued_messages(checks=1):
 		cluster.start()
 
 	else:
-		print('nothing to do...')
+		print('nothing to do')
 
 
 def copy_jobs():
@@ -51,4 +51,5 @@ if __name__ == '__main__':
 	while True:
 		print('checking queued messages')		
 		check_queued_messages()
+		print('checking again in', LOOP_CHECK_TIMEOUT, 'minutes...')
 		time.sleep(60 * LOOP_CHECK_TIMEOUT) # 1 minute
