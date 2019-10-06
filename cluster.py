@@ -57,6 +57,7 @@ class Cluster(object):
 
 	def delete(self):
 		cmd = 'gcloud container clusters delete {cluster_name} \
+				--quiet \
 				--zone {zone}'.format(
 					cluster_name=CLUSTER_NAME,
 					zone=ZONE)
