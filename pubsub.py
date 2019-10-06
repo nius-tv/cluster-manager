@@ -13,8 +13,8 @@ class PubSub(object):
 		self.project_path = self.client.project_path(PROJECT_NAME)
 
 	def num_undelivered_messages(self):
-		now = time.time()
 		interval = monitoring_v3.types.TimeInterval()
+		now = time.time()
 		interval.end_time.seconds = int(now)
 		# Data is sampled every 60 seconds.
 		# After sampling, data is not visible for up to 120 seconds.
