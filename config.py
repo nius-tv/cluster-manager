@@ -5,6 +5,7 @@ INIT_PODS = [
 	'gentle',
 	'init-story'
 ]
+JOBS_DIR = '/jobs'
 MACHINE_TYPE = 'n1-standard-4'
 MAX_CHECKS = 5
 PROJECT_NAME = 'plasmic-artefacts'

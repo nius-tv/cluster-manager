@@ -46,7 +46,7 @@ class Cluster(object):
 		subprocess.call(['bash', '-c', cmd])
 
 	def _start_pod(self, name):
-		cmd = 'kubectl apply -f {}.yaml'.format(name)
+		cmd = 'kubectl apply -f {}/{}.yaml'.format(JOBS_DIR, name)
 		subprocess.call(['bash', '-c', cmd])
 
 		self._wait_for_pod(name)
