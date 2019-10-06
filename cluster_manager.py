@@ -51,4 +51,4 @@ if __name__ == '__main__':
 	while True:
 		print('checking queued messages')		
 		check_queued_messages()
-		time.sleep(60) # 1 minute
+		time.sleep(60 * LOOP_CHECK_TIMEOUT) # 1 minute

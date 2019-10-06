@@ -14,6 +14,7 @@ INIT_PODS = [
 	}
 ]
 JOBS_DIR = '/tmp'
+LOOP_CHECK_TIMEOUT = 5 # in minutes
 MACHINE_TYPE = 'n1-standard-4'
 MAX_CHECKS = 5
 PROJECT_NAME = 'plasmic-artefacts'
