@@ -10,7 +10,7 @@ def check_queued_messages(checks=0):
 	num_undelivered_messages = pubsub.num_undelivered_messages()
 	print('messages queued:', num_undelivered_messages)
 
-	if num_undelivered_messages == 0:
+	if cluster.exists() and num_undelivered_messages == 0:
 		print('checks:', checks, '/', MAX_CHECKS)
 
 		if checks < MAX_CHECKS:
@@ -21,8 +21,11 @@ def check_queued_messages(checks=0):
 		elif checks == MAX_CHECKS:
 			cluster.delete()
 
-	elif not cluster.exists():
+	elif not cluster.exists() and num_undelivered_messages > 0:
 		cluster.start()
+
+	else:
+		print('nothing to do...')
 
 
 def copy_jobs():
