@@ -6,7 +6,7 @@ from config import *
 from pubsub import PubSub
 
 
-def check_subscriptions(checks=0):
+def check_queued_messages(checks=0):
 	num_undelivered_messages = pubsub.num_undelivered_messages()
 	print('messages queued:', num_undelivered_messages)
 
@@ -16,7 +16,7 @@ def check_subscriptions(checks=0):
 		if checks < MAX_CHECKS:
 			time.sleep(60 * CHECK_TIMEOUT)
 			checks += 1
-			check_subscriptions(checks)
+			check_queued_messages(checks)
 
 		elif checks == MAX_CHECKS:
 			cluster.delete()
@@ -47,5 +47,5 @@ if __name__ == '__main__':
 
 	while True:
 		print('checking queued messages')		
-		check_subscriptions()
+		check_queued_messages()
 		time.sleep(60) # 1 minute
