@@ -6,7 +6,7 @@ from config import *
 from pubsub import PubSub
 
 
-def check_queued_messages(checks=0):
+def check_queued_messages(checks=1):
 	num_undelivered_messages = pubsub.num_undelivered_messages()
 	print('messages queued:', num_undelivered_messages)
 
