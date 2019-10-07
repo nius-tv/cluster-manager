@@ -1,7 +1,18 @@
 CHECK_TIMEOUT = 2 # in minutes
 CLUSTER_NAME = 'plasmic-generate'
 GPU_TYPE = 'nvidia-tesla-p100'
-INIT_PODS = [
+# Warning: order matters.
+INIT_RESOURCES = [
+	{
+		'image': 'us.gcr.io/plasmic/generate-jobs-manager',
+		'name': 'service-account',
+		'path': '/app/service-account.yaml'
+	},
+	{
+		'image': 'us.gcr.io/plasmic/generate-jobs-manager',
+		'name': 'redis',
+		'path': '/app/redis.yaml'
+	},
 	{
 		'image': 'us.gcr.io/plasmic/generate-jobs-manager',
 		'name': 'gentle',
@@ -9,8 +20,8 @@ INIT_PODS = [
 	},
 	{
 		'image': 'us.gcr.io/plasmic/generate-jobs-manager',
-		'name': 'init-story',
-		'path': '/app/init-story.yaml'
+		'name': 'jobs-manager',
+		'path': '/app/jobs-manager.yaml'
 	}
 ]
 JOBS_DIR = '/tmp'
