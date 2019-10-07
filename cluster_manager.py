@@ -32,14 +32,20 @@ def check_queued_messages(checks=1):
 def copy_jobs():
 	for pod in INIT_PODS:
 		name = pod['name']
-		
-		print('copying pod yaml:', name)
+		image = pod['image']
+		print('\ncopying pod yaml:', name)
+
+		print('pulling latest docker image')
+		cmd = 'docker pull {}'.format(image)
+		subprocess.call(['bash', '-c', cmd])
+
+		# Copy pod yaml
 		output_path = '{}/{}.yaml'.format(JOBS_DIR, name)
 		cmd = 'docker run \
 				-t {image} \
 				cat {input_path} \
 				> {output_path}'.format(
-					image=pod['image'],
+					image=image,
 					input_path=pod['path'],
 					output_path=output_path)
 		subprocess.call(['bash', '-c', cmd])
@@ -64,7 +70,7 @@ if __name__ == '__main__':
 	copy_jobs()
 
 	while True:
-		print('checking queued messages')		
+		print('\nchecking queued messages')		
 		check_queued_messages()
 		print('checking again in', LOOP_CHECK_TIMEOUT, 'minutes...')
 		time.sleep(60 * LOOP_CHECK_TIMEOUT)
