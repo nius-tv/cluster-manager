@@ -3,6 +3,7 @@ import subprocess
 
 from cluster import Cluster
 from config import *
+from envsubst import envsubst
 from pubsub import PubSub
 
 
@@ -31,16 +32,30 @@ def check_queued_messages(checks=1):
 def copy_jobs():
 	for pod in INIT_PODS:
 		name = pod['name']
+		
 		print('copying pod yaml:', name)
+		output_path = '{}/{}.yaml'.format(JOBS_DIR, name)
 		cmd = 'docker run \
 				-t {image} \
-				cat {path} \
-				> {job_dir}/{name}.yaml'.format(
+				cat {input_path} \
+				> {output_path}'.format(
 					image=pod['image'],
-					path=pod['path'],
-					job_dir=JOBS_DIR,
-					name=name)
+					input_path=pod['path'],
+					output_path=output_path)
 		subprocess.call(['bash', '-c', cmd])
+
+		print('env var substitute')
+		env_var_substitute(output_path)
+
+
+def env_var_substitute(path):
+	with open(path) as f:
+		data = f.read()
+
+	data = envsubst(data)
+
+	with open(path, 'w') as f:
+		f.write(data)
 
 
 if __name__ == '__main__':
