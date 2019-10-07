@@ -1,3 +1,4 @@
+import json
 import subprocess
 import time
 
@@ -77,6 +78,13 @@ class Cluster(object):
 		output = subprocess.check_output(['bash', '-c', cmd])
 		output = output.decode('utf-8') # binary to utf-8 string
 		return not output == ''
+
+	def num_jobs_running(self):
+		cmd = 'kubectl get jobs -o json'
+		output = subprocess.check_output(['bash', '-c', cmd])
+		output = output.decode('utf-8') # binary to utf-8 string
+		output = json.loads(output)
+		return len(output['items'])
 
 	def start(self):
 		print('creating cluster')

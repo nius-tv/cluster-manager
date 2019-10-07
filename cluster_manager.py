@@ -11,8 +11,14 @@ def check_queued_messages(checks=1):
 	num_undelivered_messages = pubsub.num_undelivered_messages()
 	print('messages in queue:', num_undelivered_messages)
 
-	if cluster.exists() and num_undelivered_messages == 0:
+	num_jobs_running = 0
+	if cluster.exists():
+		num_jobs_running = cluster.num_jobs_running()
+	print('number of jobs running:', num_jobs_running)
+
+	if cluster.exists() and num_undelivered_messages == 0 and num_jobs_running == 0:
 		print('checks before cluster deletion: {}/{}'.format(checks, MAX_CHECKS))
+		print('next check will be in:', CHECK_TIMEOUT, 'minutes...')
 
 		if checks < MAX_CHECKS:
 			time.sleep(60 * CHECK_TIMEOUT)
