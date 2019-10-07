@@ -87,5 +87,5 @@ class Cluster(object):
 
 		for resource in INIT_RESOURCES:
 			name = resource['name']
-			print('starting resource:', name)
+			print('\nstarting resource:', name)
 			self._start_resource(name)
