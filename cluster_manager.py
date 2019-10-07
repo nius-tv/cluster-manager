@@ -29,24 +29,24 @@ def check_queued_messages(checks=1):
 		print('nothing to do')
 
 
-def copy_jobs():
-	for pod in INIT_PODS:
-		name = pod['name']
-		image = pod['image']
-		print('\ncopying pod yaml:', name)
+def copy_resources():
+	for resource in INIT_RESOURCES:
+		name = resource['name']
+		image = resource['image']
+		print('\ncopying resource yaml:', name)
 
 		print('pulling latest docker image')
 		cmd = 'docker pull {}'.format(image)
 		subprocess.call(['bash', '-c', cmd])
 
-		# Copy pod yaml
+		# Copy resource yaml
 		output_path = '{}/{}.yaml'.format(JOBS_DIR, name)
 		cmd = 'docker run \
 				-t {image} \
 				cat {input_path} \
 				> {output_path}'.format(
 					image=image,
-					input_path=pod['path'],
+					input_path=resource['path'],
 					output_path=output_path)
 		subprocess.call(['bash', '-c', cmd])
 
@@ -67,7 +67,7 @@ def env_var_substitute(path):
 if __name__ == '__main__':
 	cluster = Cluster()
 	pubsub = PubSub()
-	copy_jobs()
+	copy_resources()
 
 	while True:
 		print('\nchecking queued messages')		

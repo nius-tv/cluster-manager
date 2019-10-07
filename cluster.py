@@ -37,11 +37,12 @@ class Cluster(object):
 					zone=ZONE)
 		subprocess.call(['bash', '-c', cmd])
 
-	def _start_pod(self, name):
+	def _start_resource(self, name):
 		cmd = 'kubectl apply -f {}/{}.yaml'.format(JOBS_DIR, name)
 		subprocess.call(['bash', '-c', cmd])
 
-		self._wait_for_pod(name)
+		if name in WAIT_FOR_PODS:
+			self._wait_for_pod(name)
 
 	def _wait_for_pod(self, name):
 		while True:
@@ -84,7 +85,7 @@ class Cluster(object):
 		print('connecting to cluster')
 		self._connect_to_cluster()
 
-		for pod in INIT_PODS:
-			name = pod['name']
-			print('starting pod:', name)
-			self._start_pod(name)
+		for resource in INIT_RESOURCES:
+			name = resource['name']
+			print('starting resource:', name)
+			self._start_resource(name)
