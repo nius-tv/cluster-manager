@@ -52,4 +52,4 @@ if __name__ == '__main__':
 		print('checking queued messages')		
 		check_queued_messages()
 		print('checking again in', LOOP_CHECK_TIMEOUT, 'minutes...')
-		time.sleep(60 * LOOP_CHECK_TIMEOUT) # 1 minute
+		time.sleep(60 * LOOP_CHECK_TIMEOUT)
