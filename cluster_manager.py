@@ -9,7 +9,7 @@ from pubsub import PubSub
 
 def check_queued_messages(checks=1):
 	num_undelivered_messages = pubsub.num_undelivered_messages()
-	print('messages in queue:', num_undelivered_messages)
+	print('\nmessages in queue:', num_undelivered_messages)
 
 	num_jobs_running = 0
 	if cluster.exists():
@@ -18,9 +18,9 @@ def check_queued_messages(checks=1):
 
 	if cluster.exists() and num_undelivered_messages == 0 and num_jobs_running == 0:
 		print('checks before cluster deletion: {}/{}'.format(checks, MAX_CHECKS))
-		print('next check will be in:', CHECK_TIMEOUT, 'minutes...')
 
 		if checks < MAX_CHECKS:
+			print('next check will be in:', CHECK_TIMEOUT, 'minutes...')
 			time.sleep(60 * CHECK_TIMEOUT)
 			checks += 1
 			check_queued_messages(checks)
@@ -30,9 +30,7 @@ def check_queued_messages(checks=1):
 
 	elif not cluster.exists() and num_undelivered_messages > 0:
 		cluster.start()
-
-	else:
-		print('nothing to do')
+		print('cluster is ready')
 
 
 def copy_resources():
@@ -75,8 +73,7 @@ if __name__ == '__main__':
 	pubsub = PubSub()
 	copy_resources()
 
-	while True:
-		print('\nchecking queued messages')		
+	while True:	
 		check_queued_messages()
 		print('checking again in', LOOP_CHECK_TIMEOUT, 'minutes...')
 		time.sleep(60 * LOOP_CHECK_TIMEOUT)
