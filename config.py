@@ -19,4 +19,8 @@ NVIDIA_DEVICE_DAEMON_SET = 'https://raw.githubusercontent.com/GoogleCloudPlatfor
 MACHINE_TYPE = 'n1-standard-4'
 MAX_CHECKS = 5
 PROJECT_NAME = 'plasmic-artefacts'
+WAIT_FOR_PODS = [
+	'gentle',
+	'jobs-manager'
+]
 ZONE = 'us-central1-c'
