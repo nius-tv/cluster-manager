@@ -85,6 +85,10 @@ class Cluster(object):
 		print('connecting to cluster')
 		self._connect_to_cluster()
 
+		print('install device plugin for NVIDIA GPUs')
+		cmd = 'kubectl apply -f {}'.format(NVIDIA_DEVICE_DAEMON_SET)
+		subprocess.call(['bash', '-c', cmd])
+
 		for resource in INIT_RESOURCES:
 			name = resource['name']
 			print('\nstarting resource:', name)

@@ -15,6 +15,7 @@ INIT_PODS = [
 ]
 JOBS_DIR = '/tmp'
 LOOP_CHECK_TIMEOUT = 5 # in minutes
+NVIDIA_DEVICE_DAEMON_SET = 'https://raw.githubusercontent.com/GoogleCloudPlatform/container-engine-accelerators/master/nvidia-driver-installer/cos/daemonset-preloaded.yaml'
 MACHINE_TYPE = 'n1-standard-4'
 MAX_CHECKS = 5
 PROJECT_NAME = 'plasmic-artefacts'
