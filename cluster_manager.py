@@ -8,10 +8,10 @@ from pubsub import PubSub
 
 def check_queued_messages(checks=1):
 	num_undelivered_messages = pubsub.num_undelivered_messages()
-	print('messages queued:', num_undelivered_messages)
+	print('messages in queue:', num_undelivered_messages)
 
 	if cluster.exists() and num_undelivered_messages == 0:
-		print('checks:', checks, '/', MAX_CHECKS)
+		print('checks before cluster deletion: {}/{}'.format(checks, MAX_CHECKS))
 
 		if checks < MAX_CHECKS:
 			time.sleep(60 * CHECK_TIMEOUT)

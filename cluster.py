@@ -17,6 +17,9 @@ class Cluster(object):
 		subprocess.call(['bash', '-c', cmd])
 
 	def _create_cluster(self):
+		# --enable-kubernetes-alpha is required by "ttlSecondsAfterFinished" in the k8s jobs spec
+		# --cluster-ipv4-cidr, --enable-ip-alias, --services-ipv4-cidr are required by GCP Memorystore
+		# "storage-full" grants full access to GCS
 		cmd = 'gcloud container clusters create {cluster_name} \
 				--accelerator type={gpu_type},count=1 \
 				--cluster-ipv4-cidr 10.0.0.0/14 \
@@ -48,10 +51,10 @@ class Cluster(object):
 					--selector=app={} \
 					-o jsonpath="{{.items[*].status.phase}}"'.format(name)
 			output = subprocess.check_output(['bash', '-c', cmd])
-			output = output.decode('utf-8').lower()
+			output = output.decode('utf-8').lower() # binary to utf-8 string
 
 			if output == 'running':
-				print('pod', name, 'is running')
+				print('pod "{}" is running'.format(name))
 				break
 			if output == 'error':
 				raise
