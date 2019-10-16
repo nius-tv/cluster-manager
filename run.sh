@@ -11,6 +11,7 @@ export REGION=us-central1
 export TEXT_TO_SPEC_SAMPLE_RATE=22050
 export TEXT_TO_SPEC_SIGMA=0.666
 export TEXT_TO_SPEC_STRENGTH=0.01
+export VIDEO_CODEC=qtrle
 
 gcloud auth activate-service-account \
 	--key-file=$GOOGLE_APPLICATION_CREDENTIALS
