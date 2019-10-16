@@ -2,6 +2,7 @@ export AUDIO_CODEC=pcm_s16le
 export FPS=30
 export GCS_BUCKET_NAME=plasmic-generated
 export GOOGLE_APPLICATION_CREDENTIALS=/app/service-account.json
+export PIXEL_FMT=argb
 export PROJECT_NAME=plasmic-artefacts
 export REDIS_HOST=memstore-redis
 export REDIS_INSTANCE_NAME=plasmic-generate
