@@ -1,4 +1,5 @@
 export AUDIO_CODEC=pcm_s16le
+export FPS=30
 export GCS_BUCKET_NAME=plasmic-generated
 export GOOGLE_APPLICATION_CREDENTIALS=/app/service-account.json
 export PROJECT_NAME=plasmic-artefacts
