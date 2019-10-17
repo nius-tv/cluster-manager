@@ -31,7 +31,7 @@ LOOP_CHECK_TIMEOUT = 2 # in minutes
 NVIDIA_DEVICE_DAEMON_SET = 'https://raw.githubusercontent.com/GoogleCloudPlatform/container-engine-accelerators/master/nvidia-driver-installer/cos/daemonset-preloaded.yaml'
 MACHINE_TYPE = os.environ.get('MACHINE_TYPE')
 MAX_CHECKS = 5
-PROJECT_NAME = 'plasmic-artefacts'
+PROJECT_NAME = os.environ.get('PROJECT_NAME')
 WAIT_FOR_PODS = [
 	'gentle',
 	'jobs-manager'
