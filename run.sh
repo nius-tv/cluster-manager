@@ -1,4 +1,5 @@
 export AUDIO_CODEC=pcm_s16le
+export CLUSTER_NAME=story-builder
 export FPS=30
 export GENERATED_BUCKET_NAME=generated-stories
 export GOOGLE_APPLICATION_CREDENTIALS=/app/service-account.json
