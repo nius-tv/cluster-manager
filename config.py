@@ -1,8 +1,8 @@
 import os
 
 CHECK_TIMEOUT = 2 # in minutes
-GPU_TYPE = 'nvidia-tesla-k80'
 CLUSTER_NAME = os.environ.get('CLUSTER_NAME')
+GPU_TYPE = os.environ.get('GPU_TYPE')
 # Warning: order matters.
 INIT_RESOURCES = [
 	{
