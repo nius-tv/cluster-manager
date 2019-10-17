@@ -6,6 +6,7 @@ export GOOGLE_APPLICATION_CREDENTIALS=/app/service-account.json
 export GPU_TYPE=nvidia-tesla-k80
 export LIBRARY_BUCKET_NAME=assets-library
 export MACHINE_TYPE=n1-standard-4
+export MODELS_BUCKET_NAME='plasmic-models'
 export PIXEL_FMT=argb
 export PROJECT_NAME=plasmic-artefacts-2
 export REDIS_HOST=memstore-redis
