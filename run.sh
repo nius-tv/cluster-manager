@@ -8,7 +8,7 @@ export PROJECT_NAME=plasmic-artefacts
 export REDIS_HOST=memstore-redis
 export REDIS_INSTANCE_NAME=plasmic-generate
 export REDIS_PORT=6379
-export REGION=us-central1
+export REDIS_REGION=us-central1
 export TEXT_TO_SPEC_SAMPLE_RATE=22050
 export TEXT_TO_SPEC_SIGMA=0.666
 export TEXT_TO_SPEC_STRENGTH=0.01
@@ -22,11 +22,11 @@ gcloud auth configure-docker \
 	--quiet
 
 # Warning: be careful about moving this line of code,
-# because it requires $CLUSTER_NAME and $REGION values.
+# because it requires $CLUSTER_NAME and $REDIS_REGION values.
 export REDIS_IP=$(gcloud redis instances list \
 	--filter "name:$REDIS_INSTANCE_NAME" \
 	--format "value(HOST)" \
-	--region $REGION)
+	--region $REDIS_REGION)
 echo 'Redis IP:' $REDIS_IP
 
 echo '-----------------------------------'
