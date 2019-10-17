@@ -1,6 +1,6 @@
 export AUDIO_CODEC=pcm_s16le
 export FPS=30
-export GENERATED_BUCKET_NAME=plasmic-generated
+export GENERATED_BUCKET_NAME=generated-stories
 export GOOGLE_APPLICATION_CREDENTIALS=/app/service-account.json
 export LIBRARY_BUCKET_NAME=nius-library
 export PIXEL_FMT=argb
