@@ -1,3 +1,5 @@
+import os
+
 CHECK_TIMEOUT = 2 # in minutes
 CLUSTER_NAME = 'plasmic-generate'
 GPU_TYPE = 'nvidia-tesla-k80'
