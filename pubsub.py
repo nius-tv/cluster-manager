@@ -10,7 +10,7 @@ class PubSub(object):
 
 	def __init__(self):
 		self.client = monitoring_v3.MetricServiceClient()
-		self.project_path = self.client.project_path(PROJECT_NAME)
+		self.project_path = self.client.project_path(COMPUTE_PROJECT_NAME)
 
 	def num_undelivered_messages(self):
 		interval = monitoring_v3.types.TimeInterval()
