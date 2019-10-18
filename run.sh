@@ -1,4 +1,5 @@
 export AUDIO_CODEC=pcm_s16le
+export AUDIO_FMT=wav
 export CLUSTER_NAME=story-builder
 export COMPUTE_PROJECT_NAME=plasmic-compute-256214
 export FPS=30
