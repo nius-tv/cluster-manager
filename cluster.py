@@ -12,7 +12,7 @@ class Cluster(object):
 				--project {project_name} \
 				--zone {zone}'.format(
 					cluster_name=CLUSTER_NAME,
-					project_name=PROJECT_NAME,
+					project_name=COMPUTE_PROJECT_NAME,
 					zone=ZONE)
 		subprocess.call(['bash', '-c', cmd])
 

@@ -1,5 +1,6 @@
 export AUDIO_CODEC=pcm_s16le
 export CLUSTER_NAME=story-builder
+export COMPUTE_PROJECT_NAME=plasmic-compute-256214
 export FPS=30
 export GENERATED_BUCKET_NAME=generated-stories
 export GOOGLE_APPLICATION_CREDENTIALS=/app/service-account.json
@@ -8,7 +9,6 @@ export LIBRARY_BUCKET_NAME=assets-library
 export MACHINE_TYPE=n1-standard-4
 export MODELS_BUCKET_NAME='plasmic-models'
 export PIXEL_FMT=argb
-export PROJECT_NAME=plasmic-artefacts-2
 export REDIS_HOST=memstore-redis
 export REDIS_INSTANCE_NAME=story-builder
 export REDIS_PORT=6379
@@ -21,7 +21,7 @@ export VIDEO_FMT=mov
 
 gcloud auth activate-service-account \
 	--key-file=$GOOGLE_APPLICATION_CREDENTIALS
-gcloud config set core/project $PROJECT_NAME
+gcloud config set core/project $COMPUTE_PROJECT_NAME
 gcloud auth configure-docker \
 	--quiet
 
