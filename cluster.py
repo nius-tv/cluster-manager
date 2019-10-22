@@ -18,17 +18,13 @@ class Cluster(object):
 
 	def _create_cluster(self):
 		# --enable-kubernetes-alpha is required by "ttlSecondsAfterFinished" in the k8s jobs spec
-		# --cluster-ipv4-cidr, --enable-ip-alias, --services-ipv4-cidr are required by GCP Memorystore
 		# "storage-full" grants full access to GCS
 		cmd = 'gcloud container clusters create {cluster_name} \
 				--accelerator type={gpu_type},count=1 \
-				--cluster-ipv4-cidr 10.0.0.0/14 \
 				--cluster-version 1.14.6-gke.1 \
-				--enable-ip-alias \
 				--enable-kubernetes-alpha \
 				--num-nodes 1 \
 				--machine-type {machine_type} \
-				--services-ipv4-cidr 10.4.0.0/19 \
 				--scopes default,storage-full \
 				--quiet \
 				--zone {zone}'.format(
