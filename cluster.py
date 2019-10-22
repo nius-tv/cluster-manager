@@ -21,7 +21,7 @@ class Cluster(object):
 		# "storage-full" grants full access to GCS
 		cmd = 'gcloud container clusters create {cluster_name} \
 				--accelerator type={gpu_type},count=1 \
-				--cluster-version 1.14.6-gke.1 \
+				--cluster-version 1.14.6-gke.13 \
 				--enable-kubernetes-alpha \
 				--num-nodes 1 \
 				--machine-type {machine_type} \
