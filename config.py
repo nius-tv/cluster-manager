@@ -11,10 +11,6 @@ INIT_RESOURCES = [
 		'path': '/app/service-account.yaml'
 	},
 	{
-		'image': 'us.gcr.io/plasmic/generate-jobs-manager',
-		'name': 'redis',
-		'path': '/app/redis.yaml'
-	},
 	{
 		'image': 'us.gcr.io/plasmic/generate-jobs-manager',
 		'name': 'gentle',
