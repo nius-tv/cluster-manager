@@ -7,6 +7,7 @@ export GENERATED_BUCKET_NAME=generated-stories
 export GOOGLE_APPLICATION_CREDENTIALS=/app/service-account.json
 export GPU_TYPE=nvidia-tesla-k80
 export HTML_CAPTURE_DURATION=30 # screen capture time in seconds
+export HTML_CAPTURE_URL=https://storage.googleapis.com/nius-artefacts/news-title/512x1024.html#
 export IMG_FMT=png
 export LIBRARY_BUCKET_NAME=assets-library
 export MACHINE_TYPE=n1-standard-4
