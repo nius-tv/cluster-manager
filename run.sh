@@ -6,8 +6,8 @@ export FPS=30
 export GENERATED_BUCKET_NAME=plasmic-stories
 export GOOGLE_APPLICATION_CREDENTIALS=/app/service-account.json
 export GPU_TYPE=nvidia-tesla-k80
-export HTML_CAPTURE_URL=https://storage.googleapis.com/nius-artefacts/news-title/512x1024.html#
 export HTML_CAPTURE_DURATION=60 # screen capture time in seconds
+export HTML_CAPTURE_URL=http://story-overlay.plasmic-compute-256214.appspot.com?story_id=
 export IMG_FMT=png
 export LIBRARY_BUCKET_NAME=plasmic-library
 export MACHINE_TYPE=n1-standard-4
