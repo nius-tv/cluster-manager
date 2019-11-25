@@ -1,3 +1,4 @@
+export ARTEFACTS_PROJECT_NAME=plasmic-artefacts-2
 export AUDIO_CODEC=pcm_s16le
 export AUDIO_FMT=wav
 export CLUSTER_NAME=story-builder
