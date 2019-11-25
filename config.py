@@ -6,18 +6,17 @@ GPU_TYPE = os.environ.get('GPU_TYPE')
 # Warning: order matters.
 INIT_RESOURCES = [
 	{
-		'image': 'us.gcr.io/plasmic/generate-jobs-manager',
+		'image': 'us.gcr.io/plasmic-artefacts-2/generate-jobs-manager',
 		'name': 'service-account',
 		'path': '/app/service-account.yaml'
 	},
 	{
-	{
-		'image': 'us.gcr.io/plasmic/generate-jobs-manager',
+		'image': 'us.gcr.io/plasmic-artefacts-2/generate-jobs-manager',
 		'name': 'gentle',
 		'path': '/app/gentle.yaml'
 	},
 	{
-		'image': 'us.gcr.io/plasmic/generate-jobs-manager',
+		'image': 'us.gcr.io/plasmic-artefacts-2/generate-jobs-manager',
 		'name': 'jobs-manager',
 		'path': '/app/jobs-manager.yaml'
 	}
@@ -32,4 +31,4 @@ WAIT_FOR_PODS = [
 	'gentle',
 	'jobs-manager'
 ]
-ZONE = 'us-central1-c'
+ZONE = os.environ.get('ZONE')
