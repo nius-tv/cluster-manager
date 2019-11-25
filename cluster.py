@@ -23,8 +23,8 @@ class Cluster(object):
 				--accelerator type={gpu_type},count=1 \
 				--cluster-version 1.14.6-gke.13 \
 				--enable-kubernetes-alpha \
-				--num-nodes 1 \
 				--machine-type {machine_type} \
+				--num-nodes 1 \
 				--scopes default,storage-full \
 				--quiet \
 				--zone {zone}'.format(
