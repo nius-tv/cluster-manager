@@ -2,6 +2,7 @@ export ARTEFACTS_PROJECT_NAME=plasmic-artefacts-2
 export AUDIO_CODEC=pcm_s16le
 export AUDIO_FMT=wav
 export CLUSTER_NAME=story-builder
+export CLUSTER_VERSION=1.14.8-gke.17
 export COMPUTE_PROJECT_NAME=plasmic-compute-256214
 export FPS=30
 export GENERATED_BUCKET_NAME=plasmic-stories

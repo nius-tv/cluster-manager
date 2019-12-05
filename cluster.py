@@ -21,7 +21,7 @@ class Cluster(object):
 		# "storage-full" grants full access to GCS
 		cmd = 'gcloud container clusters create {cluster_name} \
 				--accelerator type={gpu_type},count=1 \
-				--cluster-version 1.14.7-gke.14 \
+				--cluster-version {cluster_version} \
 				--enable-kubernetes-alpha \
 				--local-ssd-count 1 \
 				--machine-type {machine_type} \
@@ -31,6 +31,7 @@ class Cluster(object):
 				--zone {zone}'.format(
 					cluster_name=CLUSTER_NAME,
 					gpu_type=GPU_TYPE,
+					cluster_version=CLUSTER_VERSION,
 					machine_type=MACHINE_TYPE,
 					zone=ZONE)
 		subprocess.call(['bash', '-c', cmd])

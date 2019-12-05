@@ -2,6 +2,7 @@ import os
 
 CHECK_TIMEOUT = 2 # in minutes
 CLUSTER_NAME = os.environ.get('CLUSTER_NAME')
+CLUSTER_VERSION = os.environ.get('CLUSTER_VERSION')
 GPU_TYPE = os.environ.get('GPU_TYPE')
 # Warning: order matters.
 INIT_RESOURCES = [
