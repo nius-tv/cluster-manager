@@ -26,7 +26,7 @@ class Cluster(object):
 				--local-ssd-count 1 \
 				--machine-type {machine_type} \
 				--num-nodes 1 \
-				--scopes default,storage-full \
+				--scopes cloud-platform,default,storage-full \
 				--quiet \
 				--zone {zone}'.format(
 					cluster_name=CLUSTER_NAME,
