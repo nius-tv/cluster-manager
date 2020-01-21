@@ -26,6 +26,7 @@ class Cluster(object):
 				--local-ssd-count 1 \
 				--machine-type {machine_type} \
 				--num-nodes 1 \
+				--no-enable-autoupgrade \
 				--scopes cloud-platform,default,storage-full \
 				--quiet \
 				--zone {zone}'.format(
