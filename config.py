@@ -27,6 +27,7 @@ LOOP_CHECK_TIMEOUT = 2 # in minutes
 NVIDIA_DEVICE_DAEMON_SET = 'https://raw.githubusercontent.com/GoogleCloudPlatform/container-engine-accelerators/master/nvidia-driver-installer/cos/daemonset-preloaded.yaml'
 MACHINE_TYPE = os.environ.get('MACHINE_TYPE')
 MAX_CHECKS = 5
+NUM_GPUS = int(os.environ.get('NUM_GPUS'))
 COMPUTE_PROJECT_NAME = os.environ.get('COMPUTE_PROJECT_NAME')
 WAIT_FOR_PODS = [
 	'gentle',
