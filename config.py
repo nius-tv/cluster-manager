@@ -3,6 +3,7 @@ import os
 CHECK_TIMEOUT = 2 # in minutes
 CLUSTER_NAME = os.environ.get('CLUSTER_NAME')
 CLUSTER_VERSION = os.environ.get('CLUSTER_VERSION')
+COMPUTE_PROJECT_NAME = os.environ.get('COMPUTE_PROJECT_NAME')
 GPU_TYPE = os.environ.get('GPU_TYPE')
 # Warning: order matters.
 INIT_RESOURCES = [
@@ -24,11 +25,10 @@ INIT_RESOURCES = [
 ]
 JOBS_DIR = '/tmp'
 LOOP_CHECK_TIMEOUT = 2 # in minutes
-NVIDIA_DEVICE_DAEMON_SET = 'https://raw.githubusercontent.com/GoogleCloudPlatform/container-engine-accelerators/master/nvidia-driver-installer/cos/daemonset-preloaded.yaml'
 MACHINE_TYPE = os.environ.get('MACHINE_TYPE')
 MAX_CHECKS = 5
 NUM_GPUS = int(os.environ.get('NUM_GPUS'))
-COMPUTE_PROJECT_NAME = os.environ.get('COMPUTE_PROJECT_NAME')
+NVIDIA_DEVICE_DAEMON_SET = 'https://raw.githubusercontent.com/GoogleCloudPlatform/container-engine-accelerators/master/nvidia-driver-installer/cos/daemonset-preloaded.yaml'
 WAIT_FOR_PODS = [
 	'gentle',
 	'jobs-manager'
