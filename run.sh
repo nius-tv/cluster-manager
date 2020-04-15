@@ -12,7 +12,7 @@ export HTML_CAPTURE_DURATION=60 # screen capture time in seconds
 export HTML_CAPTURE_URL=http://story-overlay.plasmic-compute-256214.appspot.com?story_id=
 export IMG_FMT=png
 export LIBRARY_BUCKET_NAME=plasmic-library
-export MACHINE_TYPE=n1-highcpu-8
+export MACHINE_TYPE=n1-standard-8
 export MODELS_BUCKET_NAME=plasmic-models
 export NUM_CPUS=4
 export NUM_GPUS=2
