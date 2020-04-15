@@ -22,7 +22,7 @@ export TEXT_TO_SPEC_SIGMA=0.666
 export TEXT_TO_SPEC_STRENGTH=0.01
 export VIDEO_CODEC=qtrle
 export VIDEO_FMT=mov
-export ZONE=us-central1-a
+export ZONE=us-central1-c
 
 gcloud auth activate-service-account \
 	--key-file=$GOOGLE_APPLICATION_CREDENTIALS
